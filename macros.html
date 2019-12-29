@@ -1,0 +1,15 @@
+{% macro render_field(field) %}
+
+  <!--Por cada campo en nuestro formuluario creamos una div-->
+  <div class="field">
+    <!--Chequeamos errores en el campo y los desplegamos-->
+    {% if field.errors %}
+      {% for error in field.errors %}
+        <!--Por cada error creamos otro div y notificamos el  error-->
+        <div class="notification error">{{ error }}</div>
+      {% endfor %}
+    {% endif %}
+    <!--Desplegamos nuestro campo-->
+    {{ field(placeholder = field.label.text) }}
+  </div>
+{% endmacro %}
